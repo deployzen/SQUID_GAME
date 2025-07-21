@@ -1,0 +1,29 @@
+DEB1 :192.168.80.110  -- install squid
+DEB2 :192.168.80.1120 -- apache2n install backend
+you can take another apache server
+
+take backup of squid.conf
+cd/etc/squid/squid.conf
+#sudo nano squid.conf --line
+1)search TAG: acl --> 865 
+	go to line no 1353
+#acl my-site-acl dst 102.168.80.110
+
+2)search TAG: http-access -->1502
+	go to line no 1526
+#http_access allow my_site_acl
+
+3)search TAG: http:Port -->1822
+	go to line 2109
+#http_port 3128 accel Vhost defaultsite = 192.168.80.120
+
+4)search TAG: cache chache-peer -->3049
+	go to line 3476
+#cache_peer line 192.168.80.120 parent 80 0 no-query originserver name=myserver 
+
+5)search TAG: chache-peer-access --3477
+	go to line 3517
+#cache-peer-access myserver allow my-site-acl
+#cache-peer-access myserver deny all
+
+6)sudo systemctl restart squid

@@ -1,0 +1,97 @@
+1) install snort in Windows
+2) install Winpcap
+
+3) install snort --> snort.exc --> run snort as administrator 
+4) run  Commandline as Administrator 
+5) make sure all all extentions are visibale (enable it)
+
+
+#deb {trusted = 1 ] http:// "path" /bookworm main
+Errors
+open Command Prompt AS ADMINISTRATOR 
+#cd /snort/bin
+#snort -w
+#getmac/fo csv /v    -- it will show you avilable adpters
+
+#snort -i 1 -c c:\snort\etc\snort.conf -l c:\snort\log -A console  ------it will strat showing errors
+
+1)ERROR ipvar --> find replace button --> replace it with Ipv6 to Ipv4 -->total 11 occerences --> Save it
+
+2)ERROR Snort-dynamicpreprocessor #line.no 246
+     open snort.conf in notepad++ 
+we have to add 15 lines comment existing line
+#dir \b
+#dynamicpreprocessore c:\snort\lib\sonrt_dynamicpreprocessor\filename  --do for all 15 lines 
+
+3)EROOR snort_dynamicengine  #line.no 247
+comment existing line
+#dynamicengine c:\snort\lib\snort_dynamicengine\file name
+
+4)ERROR snort_dynamicrules
+comment existing line
+#dynamicdetection directory c:\snort\lib\snort_dynamicrules
+
+5)ERROR normalize-IPV4
+comment all 5 lines bellow
+
+6)ERROR White_List.rules
+it will show file not found 
+make white_list.rules in rules files
+
+7)ERROR black_List.rules
+it will show file not found 
+make Black_List.rules in rules files
+
+
+
+now run again that long command if it will give you pid then all done
+there are some changes 
+1)
+change
+	var RULE_PATH ../rules
+	var SO_RULES_PATH ../so_rules
+	var PREPROC_RULE_PATH ../preproc-rules
+to
+	var RULE_PATH C:\snort\rules
+	var SO_RULE_PATH c:\snort\so_rules
+	var PREPROC_RULE_PATH c:\snort\preproc_rule
+
+2)
+change
+	var WHITE_LIST_PATH ../rule
+	var BLACK_LIST_PATH ../rule
+to
+	var WHITE_LIST_PATH ..\rules
+	var BLACK_LIST_PATH ..\rules
+
+
+3)
+change
+	whitelist $WHITE_LIST_PATH/white_list.rules,\
+	blacklist $BLACK_LIST_PATH/black_list.rules
+to 
+	whitelist $WHITE_LIST_PATH\white_list.rules,\
+	blacklist $BLACK_LIST_PATH\black_list.rules
+
+4)
+change
+	line 573 somenthing 
+	include $RULES_PATH /blacklist.rules
+to 
+	include $RULES_PATH/black_list.ri\rules
+
+
+save it run that long command again 
+
+
+if all done it willgive you a PID then all dome
+
+
+
+
+now CREATE A YOUR RULE IN RULES LIST
+MYRULES.rules
+give path in section 7 
+
+
+rules --> alert ip any any -> any any (msg: "your message";sid:".....";)

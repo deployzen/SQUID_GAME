@@ -1,0 +1,54 @@
+#sudo apt-get install suricata
+#sudo which suricata
+#sudo nano /etc/surikata/suricata.yml
+
+1)search: af-packet  --line 588
+    -interface: ens33
+
+2)search: rule-files  --line 1921
+	-suricata.rules
+	-local.rules  --add   it your rule
+
+#sudo nano /etc/suricata/rules/local.rules
+
+add rule
+	alert icmp any any -> any any (msg:"ping detected"; sid:123;,rev:1;)
+
+#sudo systemctl restart suricata
+#sudo systemctl status suricata
+
+#tail -F /var/log/suricata/fast.log
+
+**********************************************************************************************
+deb 1
+deb2
+
+#suricata --build-infra | grep version
+NFQueue-kernel feature
+		-it shows you YES!
+
+#sudo nano/etcsuricata/suricata.yaml
+uncomment 
+nfg:
+	mode:accept
+	repeat: mark:1
+	repeat-mask:1    uncomment all three lines
+
+	route-queue:2
+
+#sudo apt-get install iptables
+
+#sudo iptables -I INPUT -P icmp -J NFQUEUE --queue-num 2
+#sudo iptables -I OUTPUT -P icmp J NFQUEUE --queue-num 2
+#sudo iptables -L -V
+#sudo nano /etc/suricata/rules/local.rules
+
+#sudo systemctl restart ststus suricata 
+#sudo systemctl stop surikata
+
+#suricata /fast.log
+
+#sudo suricata -C /etc/suricata/suricatra.yaml -q 2
+
+attaker:- machine generate traffic
+ping 192.168.80.128 -c 2

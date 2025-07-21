@@ -1,0 +1,62 @@
+NAGIOS SERVER INSTALLATION
+ .PRE-Flight setup
+ .configure hostname
+ .configure static ip
+ .configure apt
+ .install sudo 
+ .set time zone
+
+
+#TIME ZONE
+#sudo dkpg-reconfigure tzdate
+
+snort(inmstallations) 
+#sudo apt install apache2 apache2-utils autoconf gcc libc6 libgd-dev make php python3 tree unzip wget libkrb5-dev openssl libssl-dev
+
+#tar -ZXF file name .tar.gz   take file from maaam
+#ls -l
+
+#sudo ./configure     --with_httpd-conf=/etc/apache2/sites-enabled  
+
+#sudo make all
+#echo $?
+
+#sudo make install-group-users
+#sudo passwd nagios --set passwd
+#cat /etc/passwd
+
+#sudo usermod -aG nagios www-data
+#ls -l /usr/local
+#sudo make install
+#sudo make install-daemoninit
+#sudo make install-command mode
+#sudo make install-config
+#sudo make install-webconf
+#sudo a2enmod cgi
+#sudo a2enmod rewrite
+#sudo htpasswd -c /usr/local/nagios/etc/ htpasswd.users nagiosadmin
+#sudo /usr/local/nagios/bin/nagios -V /usr/local/nagios/etc/nagios.cfg  --it will show you 0 warning 
+											   0 error
+
+#sudo systemctlk restart nagios
+#sudo systemctlk restart apache2
+
+
+prerequesistes
+#sudo apt-get install -y automake autotools-dev bc build-essential dc qawk gettxt libmcrypt-dev libnet-snmp-perl libssl-dev snmp
+
+ls -l /user/local/nagios/libexc
+#sudo ./configure
+#sudo make
+#sudo make install
+
+in browser ipaddress/nahgios search for it
+ ENTER password /username
+
+download plugins from server
+wget <plugin kink>tar.gz file
+extract it 
+sudo ./configure
+sudo make
+sudo make install
+
