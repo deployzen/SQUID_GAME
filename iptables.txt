@@ -1,0 +1,34 @@
+iptable
+
+deb1-192.168.80.128 firewall
+deb2-192.168.80.130
+
+#sudo apt install iptables
+#sudo which iptables
+
+#sudo iptables -l
+#sudo iptables -P FORWARD DROP
+#sudo iptables -L
+#sudo iptables -P INPUT DROP ---putty will discconnetc reconnect it
+#sudo iptables -L
+
+#sudo iptables -A INPUT -I lo -J ACCEPT
+#sudo iptables -L -V
+	sudo ssh shuhari@127.0.0.1
+	try to connect with deb 1 will be noit connect
+
+#sudo iptables -A INPUT -m state --state ESTABLISHED -J ACCEPT
+#sudo iptables -F
+#iptables -p FROWARD DROP
+#iptables -p INPUT DROP
+#iptables -p OUTPUT ACCEPT
+#iptables -P INPUT -i lo _j ACCEPT
+#iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
+
+#iptables -A INPUT -s 102.168.80.1 -P tcp --drop 22 j ACCEPT
+iptables -L -V
+#iptables -A INPUT -P tcp --drop 22 j ACCEPT 
+
+#sudo iptables -D input 7
+#sudo input -L --line -numbers
+

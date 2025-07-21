@@ -1,0 +1,29 @@
+
+
+	configuring the squid using load balancing
+		server: 192.168.80.128   --> squid
+		client: 192.168.80.129   ---> apache2	
+		deb1: 192.168.80.131   --> apache2
+		
+	
+	sudo apt install squid	
+	
+		TAG: acl
+			acl my_site_acl dst 192.168.80.128
+		
+		TAG:http_acces
+			  http_access allow my_site_acl
+		
+		TAG: http_port
+			http_port 80 vhost
+			
+		TAG: cache_peer
+			cache_peer 192.168.80.129 parent 80 0 no-query round-robin weight=1 name=server1
+			cache_peer 192.168.80.131 parent 80 0 no-query round-robin weight=1 name=server2
+			
+		systemctl restart squid
+			if any error occur --> add in /etc/hosts
+								127.0.0.1   deb   ---> deb is the hostname of the debian machine
+								
+		enter server ip address (squid)  in browser
+			it loads the two websites at a time --> load balancing
